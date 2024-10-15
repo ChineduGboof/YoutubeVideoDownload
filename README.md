@@ -1,71 +1,74 @@
-# YoutubeVideoDownload
+# YouTube Audio Downloader
 
-Code to download youtube video in various formats
+This Python script allows you to download audio from a YouTube video in your preferred audio format (e.g., MP3, WAV, M4A). It uses the `yt-dlp` library for extracting and converting audio from YouTube videos.
 
-To extract audio from a YouTube video on the terminal, you can use the popular tool **youtube-dl** or its modern fork **yt-dlp**. These tools allow you to download videos and extract the audio.
+## Prerequisites
 
-Here’s how to do it:
+Before running the script, ensure you have the following installed:
 
-### Step 1: Install `yt-dlp` (or `youtube-dl`)
+1. **Python 3.6 or higher**  
+   Download from: https://www.python.org/downloads/
 
-First, make sure you have **yt-dlp** installed. If not, you can install it using `pip`.
+2. **yt-dlp**  
+   yt-dlp is a command-line program to download videos from YouTube and other video platforms. Install it via pip:
 
-```bash
-pip install yt-dlp
-```
+   ```bash
+   pip install yt-dlp
+   ```
 
-Alternatively, if you're using **youtube-dl**:
+3. **FFmpeg**  
+   FFmpeg is used by `yt-dlp` to handle audio conversion.  
+   Follow the installation instructions for your platform:
 
-```bash
-pip install youtube-dl
-```
+   - **Windows**:  
+     Download the FFmpeg executable from https://ffmpeg.org/download.html and add it to your system’s PATH.
+   - **Linux/macOS**:  
+     You can install FFmpeg via your package manager. For example:
 
-### Step 2: Install `ffmpeg`
+     ```bash
+     sudo apt install ffmpeg   # For Ubuntu/Debian
+     brew install ffmpeg       # For macOS
+     ```
 
-You will also need **ffmpeg**, a tool for processing multimedia files, to extract the audio from the video.
+## How to Use
 
-On Linux:
+1. Clone or download this script to your local machine.
 
-```bash
-sudo apt install ffmpeg
-```
+2. Run the script using Python:
 
-On macOS (via Homebrew):
+   ```bash
+   python <script_name>.py
+   ```
 
-```bash
-brew install ffmpeg
-```
+3. You will be prompted to:
 
-On Windows:
+   - Enter the URL of the YouTube video.
+   - Enter the desired audio format (e.g., mp3, wav, m4a). If no format is provided, the default will be `mp3`.
 
-1. Download FFmpeg from the official site: https://ffmpeg.org/download.html.
-2. Add it to your system's PATH.
+4. The script will download and extract the audio from the YouTube video, saving it to the current directory with the video title as the filename.
 
-### Step 3: Extract the audio
+## Example
 
-Use the following command to extract audio from a YouTube video:
+If you provide the following inputs:
 
-```bash
-yt-dlp -x --audio-format mp3 <YouTube_URL>
-```
+- YouTube URL: `https://www.youtube.com/watch?v=example`
+- Desired format: `mp3`
 
-If you are using `youtube-dl` instead of `yt-dlp`, the command will be:
-
-```bash
-youtube-dl -x --audio-format mp3 <YouTube_URL>
-```
-
-### Explanation:
-
-- `-x`: Extract audio.
-- `--audio-format mp3`: Converts the audio to MP3 format. You can change this to other formats like `aac`, `wav`, or `m4a`.
-
-### Example:
+The audio will be downloaded and saved as:
 
 ```bash
-yt-dlp -x --audio-format mp3 https://www.youtube.com/watch?v=YOUR_VIDEO_ID
+<Video_Title>.mp3
 ```
 
-This will download the video, extract the audio in MP3 format, and save it to the current directory.
+## Error Handling
 
-Let me know if you need any further assistance!
+If any errors occur during the download or extraction process, they will be displayed in the terminal.
+
+## License
+
+This script is free to use and modify.
+
+## Notes
+
+- Only single videos can be downloaded at a time as playlists are disabled in the script.
+- Ensure FFmpeg is properly installed and added to your system PATH to avoid conversion errors.
